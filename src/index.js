@@ -2,16 +2,13 @@ require('dotenv').config();
 
 const fs = require('fs');
 const asyncPool = require('tiny-async-pool');
-const readline = require('readline').createInterface({
-  input: process.stdin,
-  output: process.stdout
-}); ;
 
 const UserService = require('./UserService');
+const { getDbFileName, getPoolLimit } = require('./config');
 
-const { DATABASE_FILE_NAME } = process.env;
+const dbFileName = getDbFileName();
+const poolLimit = getPoolLimit();
 const dbUsers = [];
-let poolLimit = 100;
 
 async function getUserAddressAndSaveToDb(user) {
   const address = await UserService.getUserAddress(user.id);
@@ -21,7 +18,7 @@ async function getUserAddressAndSaveToDb(user) {
 
   const stringfiedUsers = JSON.stringify(dbUsers);
 
-  fs.writeFile(`src/database/${DATABASE_FILE_NAME}`, stringfiedUsers, (err) => {
+  fs.writeFile(`src/database/${dbFileName}`, stringfiedUsers, (err) => {
     if (err) {
       throw err;
     }
@@ -30,15 +27,8 @@ async function getUserAddressAndSaveToDb(user) {
   });
 }
 
-async function run() {
+(async () => {
   const users = await UserService.getUsers();
 
   await asyncPool(poolLimit, users, getUserAddressAndSaveToDb);
-}
-
-readline.question('Set the pool limit: (default 100)\n', response => {
-  poolLimit = response;
-  readline.close();
-
-  run();
-});
+})();
