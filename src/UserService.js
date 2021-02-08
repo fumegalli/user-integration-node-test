@@ -1,5 +1,5 @@
 const axios = require('axios');
-const BASE_URL = 'https://cwi-nodejs-test.herokuapp.com';
+const { BASE_URL } = process.env;
 
 module.exports = class UserService {
   static async getUsers() {
