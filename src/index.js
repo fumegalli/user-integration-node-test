@@ -19,7 +19,7 @@ async function getUserAddressAndSaveToDb(user) {
 
   dbUsers.push(user);
 
-  const stringfiedUsers = JSON.stringify(dbUsers, null, 2);
+  const stringfiedUsers = JSON.stringify(dbUsers);
 
   fs.writeFile(`src/database/${DATABASE_FILE_NAME}`, stringfiedUsers, (err) => {
     if (err) {
