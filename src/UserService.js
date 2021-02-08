@@ -5,13 +5,13 @@ module.exports = class UserService {
   static async getUsers() {
     try {
       console.log('Getting users...');
-  
+
       const { data } = await axios.get(BASE_URL);
   
       return data;
     } catch (err) {
       console.error('Fail to get users: ', err.message);
-      await UserService.getUsers();
+      return UserService.getUsers();
     }
   }
 
