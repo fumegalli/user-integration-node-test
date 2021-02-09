@@ -1,11 +1,12 @@
-function getDbFileName() {
+function getDbPath() {
   const { DATABASE_FILE_NAME } = process.env;
+  const PATH = `src/database/${DATABASE_FILE_NAME}`;
 
   if (DATABASE_FILE_NAME.endsWith('.json')) {
-    return DATABASE_FILE_NAME;
+    return PATH;
   }
 
-  return `${DATABASE_FILE_NAME}.json`;
+  return `${PATH}.json`;
 }
 
 function getPoolLimit() {
@@ -19,4 +20,4 @@ function getPoolLimit() {
   return poolLimitNumber;
 }
 
-module.exports = { getDbFileName, getPoolLimit };
+module.exports = { getDbPath, getPoolLimit };
