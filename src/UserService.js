@@ -1,4 +1,5 @@
 const axios = require('axios');
+
 const { BASE_URL } = process.env;
 
 module.exports = class UserService {
@@ -7,7 +8,7 @@ module.exports = class UserService {
       console.log('Getting users...');
 
       const { data } = await axios.get(BASE_URL);
-  
+
       return data;
     } catch (err) {
       console.error('Fail to get users: ', err.message);
@@ -19,7 +20,7 @@ module.exports = class UserService {
     try {
       console.log(`Getting user ${userId} address...`);
 
-      const { data } = await axios.get(`${BASE_URL}/${userId}/address`)
+      const { data } = await axios.get(`${BASE_URL}/${userId}/address`);
 
       return data;
     } catch (err) {
@@ -30,4 +31,4 @@ module.exports = class UserService {
       return UserService.getUserAddress(userId);
     }
   }
-}
+};
