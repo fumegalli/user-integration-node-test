@@ -5,7 +5,7 @@ function getDbFileName() {
     return DATABASE_FILE_NAME;
   }
 
-  return `${DATABASE_FILE_NAME}.json`
+  return `${DATABASE_FILE_NAME}.json`;
 }
 
 function getPoolLimit() {
@@ -19,4 +19,4 @@ function getPoolLimit() {
   return poolLimitNumber;
 }
 
-module.exports = { getDbFileName, getPoolLimit }
+module.exports = { getDbFileName, getPoolLimit };

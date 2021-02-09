@@ -12,9 +12,10 @@ const dbUsers = [];
 
 async function getUserAddressAndSaveToDb(user) {
   const address = await UserService.getUserAddress(user.id);
-  user.address = address;
 
-  dbUsers.push(user);
+  const newUser = { ...user, address };
+
+  dbUsers.push(newUser);
 
   const stringfiedUsers = JSON.stringify(dbUsers);
 
