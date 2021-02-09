@@ -1,13 +1,17 @@
-const axios = require('axios');
+const Axios = require('axios');
 
 const { BASE_URL } = process.env;
+
+const axios = Axios.create({
+  baseURL: BASE_URL,
+});
 
 module.exports = class UserService {
   static async getUsers() {
     try {
       console.log('Getting users...');
 
-      const { data } = await axios.get(BASE_URL);
+      const { data } = await axios.get();
 
       return data;
     } catch (err) {
@@ -20,7 +24,7 @@ module.exports = class UserService {
     try {
       console.log(`Getting user ${userId} address...`);
 
-      const { data } = await axios.get(`${BASE_URL}/${userId}/address`);
+      const { data } = await axios.get(`/${userId}/address`);
 
       return data;
     } catch (err) {
