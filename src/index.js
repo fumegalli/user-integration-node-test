@@ -1,31 +1,21 @@
 require('dotenv').config();
 
-const fs = require('fs');
 const asyncPool = require('tiny-async-pool');
 
-const UserService = require('./UserService');
-const { getDbFileName, getPoolLimit } = require('./config');
+const { getPoolLimit } = require('./config/env');
+const { createDatabase, saveUser } = require('./database');
+const UserService = require('./services/UserService');
 
-const dbFileName = getDbFileName();
 const poolLimit = getPoolLimit();
-const dbUsers = [];
+
+createDatabase();
 
 async function getUserAddressAndSaveToDb(user) {
   const address = await UserService.getUserAddress(user.id);
 
   const newUser = { ...user, address };
 
-  dbUsers.push(newUser);
-
-  const stringfiedUsers = JSON.stringify(dbUsers);
-
-  fs.writeFile(`src/database/${dbFileName}`, stringfiedUsers, (err) => {
-    if (err) {
-      throw err;
-    }
-
-    console.log(`User ${user.id} saved on database!`);
-  });
+  saveUser(newUser);
 }
 
 (async () => {
