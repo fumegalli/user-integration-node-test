@@ -1,8 +1,9 @@
 # Sobre:
 
 Imagine que você trabalha em uma empresa e agora você precisa fazer uma integração com
-um sistema externo para alimentar sua base de dados de usuários. A integração deve ser construída em `JS/TS` em qualquer padrão desejado. Deve haver umarquivo `readme.md` na raiz do projeto explicado os passos para que seja executada a
-integração.
+um sistema externo para alimentar sua base de dados de usuários. A integração deve ser construída em `JS/TS` em qualquer padrão desejado. Deve haver umarquivo `readme.md` na raiz do projeto explicado os passos para que seja executada a integração.
+
+**O maior desafio deste teste é lidar com uma base de 100 mil usuários** e para cada um desses usuários, fazer uma chamada para o endpoint de endereço.
 
 # APIs
 ## Endpoint
