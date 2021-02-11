@@ -5,6 +5,8 @@ um sistema externo para alimentar sua base de dados. A integração deve ser con
 arquivo `readme.md` na raiz do projeto explicado os passos para que seja executada a
 integração.
 
+**OBS: Algumas observações sobre as API's externas foram omitidas por questões de segurança.**
+
 # Adendo
 
 Todas as requisições tem 10% de chance de retornar `500 - Internal Server Error`.
