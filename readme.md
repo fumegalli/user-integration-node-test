@@ -55,8 +55,7 @@ Retornos possíveis são `200 - OK` e `404 - NOT FOUND`, salvo [Adendo](#Adendo)
 
 **Method:** GET
 
-**Response:**
-
+**Response:** <br/>
 Possibilidade 1 (usuário sem endereço): Status: 404
 
 Possibilidade 2 (usuário com endereço): Status: 200 Body:
@@ -71,6 +70,8 @@ Possibilidade 2 (usuário com endereço): Status: 200 Body:
 
 **OBS: A URL base da API externa foi omitida por questões de segurança.**
 
+<br/>
+
 # Adendo
 
 Todas as requisições tem 10% de chance de retornar `500 - Internal Server Error`.
@@ -83,7 +84,9 @@ A integração deve salvar um arquivo `json` adicionando a propriedade `address`
 os usuários. Se o usuário não tiver endereço o usuário deve ter a propriedade `address`
 como `{}` .
 
-<br/><br/>
+---
+
+<br/><br/><br/>
 
 # Como executar:
 
